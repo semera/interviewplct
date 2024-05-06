@@ -15,6 +15,8 @@ public class ErrorHandlingMiddleware
 
     public async Task Invoke(HttpContext context)
     {
+        // TODO: would be nice to handle validation exceptions here, but as explained in readme, only validation implemented for now throws different exception
+
         try
         {
             await _next(context);

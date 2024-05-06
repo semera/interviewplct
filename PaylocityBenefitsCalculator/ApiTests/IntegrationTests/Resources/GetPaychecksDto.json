@@ -1,0 +1,576 @@
+{
+    "Paychecks": [
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-01-01T00:00:00",
+                "EndDate": "2024-01-15T00:00:00"
+            },
+            "NetSalary": 2606.25,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 15,
+                    "Salary": 3099.45
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 15,
+                    "Salary": -493.20
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-01-16T00:00:00",
+                "EndDate": "2024-01-30T00:00:00"
+            },
+            "NetSalary": 2606.25,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 15,
+                    "Salary": 3099.45
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 15,
+                    "Salary": -493.20
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-01-31T00:00:00",
+                "EndDate": "2024-02-13T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-02-14T00:00:00",
+                "EndDate": "2024-02-27T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-02-28T00:00:00",
+                "EndDate": "2024-03-12T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-03-13T00:00:00",
+                "EndDate": "2024-03-26T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-03-27T00:00:00",
+                "EndDate": "2024-04-09T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-04-10T00:00:00",
+                "EndDate": "2024-04-23T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-04-24T00:00:00",
+                "EndDate": "2024-05-07T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-05-08T00:00:00",
+                "EndDate": "2024-05-21T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-05-22T00:00:00",
+                "EndDate": "2024-06-04T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-06-05T00:00:00",
+                "EndDate": "2024-06-18T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-06-19T00:00:00",
+                "EndDate": "2024-07-02T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-07-03T00:00:00",
+                "EndDate": "2024-07-16T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-07-17T00:00:00",
+                "EndDate": "2024-07-30T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-07-31T00:00:00",
+                "EndDate": "2024-08-13T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-08-14T00:00:00",
+                "EndDate": "2024-08-27T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-08-28T00:00:00",
+                "EndDate": "2024-09-10T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-09-11T00:00:00",
+                "EndDate": "2024-09-24T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-09-25T00:00:00",
+                "EndDate": "2024-10-08T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-10-09T00:00:00",
+                "EndDate": "2024-10-22T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-10-23T00:00:00",
+                "EndDate": "2024-11-05T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-11-06T00:00:00",
+                "EndDate": "2024-11-19T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-11-20T00:00:00",
+                "EndDate": "2024-12-03T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-12-04T00:00:00",
+                "EndDate": "2024-12-17T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        },
+        {
+            "AnnualSalary": 75420.99,
+            "Period": {
+                "StartDate": "2024-12-18T00:00:00",
+                "EndDate": "2024-12-31T00:00:00"
+            },
+            "NetSalary": 2432.50,
+            "Items": [
+                {
+                    "Name": "base salary",
+                    "DailyRate": 206.63,
+                    "Days": 14,
+                    "Salary": 2892.82
+                },
+                {
+                    "Name": "base cost",
+                    "DailyRate": -32.88,
+                    "Days": 14,
+                    "Salary": -460.32
+                }
+            ]
+        }
+    ]
+}

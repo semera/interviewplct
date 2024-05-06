@@ -10,7 +10,7 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class DependentsController(IEmployeesDao employeesDao, IMapper mapper) : ControllerBase // Added IMapper dependency
+public class DependentsController(IEmployeesDao employeesDao, IMapper mapper) : ControllerBase
 {
     [SwaggerOperation(Summary = "Get dependent by id")]
     [HttpGet("{id}")]

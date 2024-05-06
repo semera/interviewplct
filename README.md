@@ -1,25 +1,57 @@
-# What is this?
+# Implementation Notes and Decisions
 
-A project seed for a C# dotnet API ("PaylocityBenefitsCalculator").  It is meant to get you started on the Paylocity BackEnd Coding Challenge by taking some initial setup decisions away.
+## Focus
 
-The goal is to respect your time, avoid live coding, and get a sense for how you work.
+- The majority of time was spent on domain modeling.
+  - This should make it easy to change or add new features.
+  - The best starting point to understand the code is [PaycheckService](\PaylocityBenefitsCalculator\Api\Domain\Paychecks\PaycheckService.cs).
 
-# Coding Challenge
+## Requirement Implementation
 
-**Show us how you work.**
+- There are two different approaches for dividing the year into 26 pieces.
+  - The first approach starts on New Year's Day, where every period has 14 days except the first period which has 15 days (and the second in a leap year).
+  - The second approach ensures every period has exactly 14 days, starting on Monday and ending on Sunday. This starts on the first Monday of the year.
+  - The second approach is more natural, but not exactly what was required in the task.
 
-Each of our Paylocity product teams operates like a small startup, empowered to deliver business value in
-whatever way they see fit. Because our teams are close knit and fast moving it is imperative that you are able
-to work collaboratively with your fellow developers. 
+- All calculations are based on a one-day rate, then multiplied by the number of days in the period.
+  - This means weekends are treated as normal days.
+  - This is not a real-time approach, but it can be easily updated with a business calendar, holiday planner, and so on.
+  - All day rates are rounded to 2 decimal places, so there may be some rounding errors.
 
-This coding challenge is designed to allow you to demonstrate your abilities and discuss your approach to
-design and implementation with your potential colleagues. You are free to use whatever technologies you
-prefer but please be prepared to discuss the choices you’ve made. We encourage you to focus on creating a
-logical and functional solution rather than one that is completely polished and ready for production.
+- Paychecks are implemented as a sub-resource of employees in the EmployeesController.
+  - The controller directly calls IPaycheckService from the domain. This approach calculates the paycheck directly on the Web Server. It would be better to move the calculation to a service behind a request/reply (either async messaging or at least a gRPC call).
 
-The challenge can be used as a canvas to capture your strengths in addition to reflecting your overall coding
-standards and approach. There’s no right or wrong answer.  It’s more about how you think through the
-problem. We’re looking to see your skills in all three tiers so the solution can be used as a conversation piece
-to show our teams your abilities across the board.
+## Test Coverage
 
-Requirements will be given separately.
+- There is almost full coverage for the domain.
+- The rest of the tests are minimal.
+
+## Integration Testing
+
+- Integrated tests are switched to 'Microsoft.AspNetCore.Mvc.Testing'.
+- It's possible to switch and test the real API with the environment variable:
+
+```
+USE_REAL_SERVER=true
+```
+
+## Data Access
+
+- DAO was used for simplicity.
+- Due to time constraints, there are no separate objects for the data layer and business layer.
+
+## Validations
+
+- There is no real input data validation.
+- Only validation of data before use during processing has been implemented.
+- I consider this situation "inconsistent data" in the database, like an assert exception. It throws an exception and generates an internal server error.
+
+## Unhandled Exceptions
+
+- These are handled with middleware.
+- As mentioned above, no validation or other exceptions are handled.
+
+## TODO:
+
+- There are many places in the code to discuss - these are marked with TODO:
+

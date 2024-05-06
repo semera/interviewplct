@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -6,6 +6,10 @@
     <IsPackable>false</IsPackable>
     
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="IntegrationTests\Resources\GetPaychecksDto.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Bogus" Version="35.5.1" />
@@ -25,6 +29,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Api\Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="IntegrationTests\Resources\GetPaychecksDto.json" />
   </ItemGroup>
 
 </Project>

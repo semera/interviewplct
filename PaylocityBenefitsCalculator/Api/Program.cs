@@ -1,16 +1,46 @@
 using Api;
+using Api.Domain.Configs;
+using Api.Domain.Paychecks;
+using Api.Domain.Rules;
+using Api.Domain.Segmenting;
+using Api.Domain.Tools;
+using Api.Domain.Validations;
 using Api.Middleware;
 using Api.Services;
 using Microsoft.OpenApi.Models;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// services
 builder.Services.AddSingleton<IEmployeesDao, EmployeesDao>();
 
+// domain - paychecks
+builder.Services.AddSingleton<IPaycheckService, PaycheckService>();
+builder.Services.AddSingleton<IPaycheckCalculator, PaycheckCalculator>();
+
+// domain - segmenting
+// TODO: would be nice a factory here and choose segmenter based on configuration
+//builder.Services.AddSingleton<IPayPeriodSegmenter, TwoWeeksPayPeriodSegmenter>();
+builder.Services.AddSingleton<IPayPeriodSegmenter, FullYearPayPeriodSegmenter>();
+
+// domain - rules
+builder.Services.AddSingleton<IRule, SalaryRule>();
+builder.Services.AddSingleton<IRule, BaseCostRule>();
+builder.Services.AddSingleton<IRule, DependentCostRule>();
+builder.Services.AddSingleton<IRule, HighSalaryCostRule>();
+builder.Services.AddSingleton<IRule, FiftyYearsDependentRule>();
+
+// domain - tools, config, validations
+builder.Services.AddSingleton<IConfig, Config>();
+builder.Services.AddSingleton<ICalendarTools, CalendarTools>();
+builder.Services.AddSingleton<IDaysCalculator, DaysCalculator>();
+builder.Services.AddSingleton<IRatesCalculator, RatesCalculator>();
+builder.Services.AddSingleton<IValidation, EmployeeCanHaveOnlyOnePartnerValidation>();
+
+// mapper
 builder.Services.AddAutoMapper(typeof(DtoProfile));
 
-
+// Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

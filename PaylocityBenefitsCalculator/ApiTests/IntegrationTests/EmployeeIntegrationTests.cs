@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Api.Dtos.Dependent;
 using Api.Dtos.Employee;
+using Api.Dtos.Paycheck;
 using Api.Models;
-using Api.Services;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace ApiTests.IntegrationTests;
@@ -90,7 +93,6 @@ public class EmployeeIntegrationTests : IntegrationTest, IClassFixture<WebApplic
 
     [Fact]
     [Trait("Category", "Integration")]
-    //task: make test pass
     public async Task WhenAskedForAnEmployee_ShouldReturnCorrectEmployee()
     {
         var response = await HttpClient.GetAsync("/api/v1/employees/1");
@@ -107,11 +109,35 @@ public class EmployeeIntegrationTests : IntegrationTest, IClassFixture<WebApplic
 
     [Fact]
     [Trait("Category", "Integration")]
-    //task: make test pass
     public async Task WhenAskedForANonexistentEmployee_ShouldReturn404()
     {
         var response = await HttpClient.GetAsync($"/api/v1/employees/{int.MinValue}");
         await response.ShouldReturn(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task WhenAskedForPaycheckANonexistentEmployee_ShouldReturn404()
+    {
+        HttpResponseMessage response = await HttpClient.GetAsync($"/api/v1/employee/{int.MinValue}/paychecks/2024");
+        await response.ShouldReturn(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task WhenAskedForAPaycheck_ShouldReturnCorrectPaycheck()
+    {
+        HttpResponseMessage response = await HttpClient.GetAsync("/api/v1/employees/1/paychecks/2024");
+        GetPaychecksDto paycheck = JsonConvert.DeserializeObject<GetPaychecksDto>(GetEmbeddedResource("GetPaychecksDto.json"));
+        await response.ShouldReturn(HttpStatusCode.OK, paycheck);
+    }
+
+    private static string GetEmbeddedResource(string resource)
+    {
+        string resourceName = typeof(EmployeeIntegrationTests).Assembly.GetManifestResourceNames().First(str => str.EndsWith(resource));
+        using Stream? stream = typeof(EmployeeIntegrationTests).Assembly.GetManifestResourceStream(resourceName);
+        using var reader = new StreamReader(stream!);
+        return reader.ReadToEnd();
     }
 }
 

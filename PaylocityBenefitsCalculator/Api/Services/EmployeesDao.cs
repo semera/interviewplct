@@ -82,8 +82,8 @@ public class EmployeesDao : IEmployeesDao
 
     }
 
-    public async Task<List<Dependent>> GetAllDependent() => _employees.SelectMany(x => x.Dependents).ToList();
-    public async Task<List<Employee>> GetAllEmployees() => _employees;
-    public async Task<Dependent?> GetDependent(int id) => (await GetAllDependent()).FirstOrDefault(x => x.Id == id);
-    public async Task<Employee?> GetEmployee(int id) => (await GetAllEmployees()).FirstOrDefault(x => x.Id == id);
+    public Task<List<Dependent>> GetAllDependent() => Task.FromResult(_employees.SelectMany(x => x.Dependents).ToList());
+    public Task<List<Employee>> GetAllEmployees() => Task.FromResult(_employees);
+    public Task<Dependent?> GetDependent(int id) => Task.FromResult(_employees.SelectMany(x => x.Dependents).FirstOrDefault(x => x.Id == id));
+    public Task<Employee?> GetEmployee(int id) => Task.FromResult(_employees.FirstOrDefault(x => x.Id == id));
 }
