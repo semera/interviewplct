@@ -19,6 +19,10 @@
   - Dependents are handled from a date when they started to be valid, for example child could be counted on for several days if he was born during the period.
   - All day rates are rounded to 2 decimal places, so there may be some rounding errors.
 
+### Example:
+![image](https://github.com/semera/interviewplct/assets/10085862/676fca9e-e571-48bb-8bea-3646682cef4f)
+
+
 - Paychecks are implemented as a sub-resource of employees in the EmployeesController.
   - The controller directly calls IPaycheckService from the domain. This approach calculates the paycheck directly on the Web Server. It would be better to move the calculation to a service behind a request/reply (either async messaging or at least a gRPC call).
 
