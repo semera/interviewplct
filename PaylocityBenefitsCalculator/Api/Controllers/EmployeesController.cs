@@ -1,6 +1,9 @@
-﻿using Api.Dtos.Dependent;
+﻿using Api.Domain.Entities;
+using Api.Dtos.Dependent;
 using Api.Dtos.Employee;
 using Api.Models;
+using Api.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -8,92 +11,40 @@ namespace Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class EmployeesController : ControllerBase
+public class EmployeesController(IEmployeesDao employeesDao, IMapper mapper) : ControllerBase
 {
     [SwaggerOperation(Summary = "Get employee by id")]
     [HttpGet("{id}")]
     public async Task<ActionResult<ApiResponse<GetEmployeeDto>>> Get(int id)
     {
-        throw new NotImplementedException();
+        Employee? employee = await employeesDao.GetEmployee(id);
+        if (employee is not null)
+        {
+            GetEmployeeDto employeeDto = mapper.Map<GetEmployeeDto>(employee);
+            return new ApiResponse<GetEmployeeDto>
+            {
+                Data = employeeDto,
+                Success = true
+            };
+        }
+
+        return new NotFoundObjectResult(new ApiResponse<GetEmployeeDto>
+        {
+            Message = $"Employee with id {id} not found",
+            Success = false
+        });
     }
 
     [SwaggerOperation(Summary = "Get all employees")]
     [HttpGet("")]
     public async Task<ActionResult<ApiResponse<List<GetEmployeeDto>>>> GetAll()
     {
-        //task: use a more realistic production approach
-        var employees = new List<GetEmployeeDto>
+        List<Employee> employees = await employeesDao.GetAllEmployees();
+        List<GetEmployeeDto> employeeDtos = employees.Select(employee => mapper.Map<GetEmployeeDto>(employee)).ToList();
+        return new ApiResponse<List<GetEmployeeDto>>
         {
-            new()
-            {
-                Id = 1,
-                FirstName = "LeBron",
-                LastName = "James",
-                Salary = 75420.99m,
-                DateOfBirth = new DateTime(1984, 12, 30)
-            },
-            new()
-            {
-                Id = 2,
-                FirstName = "Ja",
-                LastName = "Morant",
-                Salary = 92365.22m,
-                DateOfBirth = new DateTime(1999, 8, 10),
-                Dependents = new List<GetDependentDto>
-                {
-                    new()
-                    {
-                        Id = 1,
-                        FirstName = "Spouse",
-                        LastName = "Morant",
-                        Relationship = Relationship.Spouse,
-                        DateOfBirth = new DateTime(1998, 3, 3)
-                    },
-                    new()
-                    {
-                        Id = 2,
-                        FirstName = "Child1",
-                        LastName = "Morant",
-                        Relationship = Relationship.Child,
-                        DateOfBirth = new DateTime(2020, 6, 23)
-                    },
-                    new()
-                    {
-                        Id = 3,
-                        FirstName = "Child2",
-                        LastName = "Morant",
-                        Relationship = Relationship.Child,
-                        DateOfBirth = new DateTime(2021, 5, 18)
-                    }
-                }
-            },
-            new()
-            {
-                Id = 3,
-                FirstName = "Michael",
-                LastName = "Jordan",
-                Salary = 143211.12m,
-                DateOfBirth = new DateTime(1963, 2, 17),
-                Dependents = new List<GetDependentDto>
-                {
-                    new()
-                    {
-                        Id = 4,
-                        FirstName = "DP",
-                        LastName = "Jordan",
-                        Relationship = Relationship.DomesticPartner,
-                        DateOfBirth = new DateTime(1974, 1, 2)
-                    }
-                }
-            }
-        };
-
-        var result = new ApiResponse<List<GetEmployeeDto>>
-        {
-            Data = employees,
+            Data = employeeDtos,
             Success = true
         };
-
-        return result;
     }
 }

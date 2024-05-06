@@ -1,34 +1,28 @@
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading.Tasks;
-using Api.Dtos.Dependent;
-using Api.Dtos.Employee;
-using Api.Models;
-using Api.Services;
-using AutoMapper;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Xunit;
+﻿using Api.Domain.Entities;
 
-namespace ApiTests.IntegrationTests;
+namespace Api.Services;
 
-[Trait("Category", "Integration")]
-public class EmployeeIntegrationTests : IntegrationTest, IClassFixture<WebApplicationFactory<Program>>
+
+// TODO: 1. for simplicity DAO is used to access the data, there is no real database connection, no transaction handling ...
+// TODO: 2. with limited time I don't have created separated entities for domain and for persistence.
+// TODO: 3. please ignore this O(N) implementation of searching, it's just for testing purposes
+public class EmployeesDao : IEmployeesDao
 {
-    [Fact]
-    [Trait("Category", "Integration")]
-    public async Task WhenAskedForAllEmployees_ShouldReturnAllEmployees()
+    private readonly List<Employee> _employees;
+
+    public EmployeesDao()
     {
-        var response = await HttpClient.GetAsync("/api/v1/employees");
-        var employees = new List<GetEmployeeDto>
-        {
+        // mocked data
+        _employees =
+        [
             new()
             {
                 Id = 1,
                 FirstName = "LeBron",
                 LastName = "James",
                 Salary = 75420.99m,
-                DateOfBirth = new DateTime(1984, 12, 30)
+                DateOfBirth = new DateTime(1984, 12, 30),
+                Dependents = []
             },
             new()
             {
@@ -37,8 +31,8 @@ public class EmployeeIntegrationTests : IntegrationTest, IClassFixture<WebApplic
                 LastName = "Morant",
                 Salary = 92365.22m,
                 DateOfBirth = new DateTime(1999, 8, 10),
-                Dependents = new List<GetDependentDto>
-                {
+                Dependents =
+                [
                     new()
                     {
                         Id = 1,
@@ -63,7 +57,7 @@ public class EmployeeIntegrationTests : IntegrationTest, IClassFixture<WebApplic
                         Relationship = Relationship.Child,
                         DateOfBirth = new DateTime(2021, 5, 18)
                     }
-                }
+                ]
             },
             new()
             {
@@ -72,8 +66,8 @@ public class EmployeeIntegrationTests : IntegrationTest, IClassFixture<WebApplic
                 LastName = "Jordan",
                 Salary = 143211.12m,
                 DateOfBirth = new DateTime(1963, 2, 17),
-                Dependents = new List<GetDependentDto>
-                {
+                Dependents =
+                [
                     new()
                     {
                         Id = 4,
@@ -82,36 +76,14 @@ public class EmployeeIntegrationTests : IntegrationTest, IClassFixture<WebApplic
                         Relationship = Relationship.DomesticPartner,
                         DateOfBirth = new DateTime(1974, 1, 2)
                     }
-                }
+                ]
             }
-        };
-        await response.ShouldReturn(HttpStatusCode.OK, employees);
+        ];
+
     }
 
-    [Fact]
-    [Trait("Category", "Integration")]
-    //task: make test pass
-    public async Task WhenAskedForAnEmployee_ShouldReturnCorrectEmployee()
-    {
-        var response = await HttpClient.GetAsync("/api/v1/employees/1");
-        var employee = new GetEmployeeDto
-        {
-            Id = 1,
-            FirstName = "LeBron",
-            LastName = "James",
-            Salary = 75420.99m,
-            DateOfBirth = new DateTime(1984, 12, 30)
-        };
-        await response.ShouldReturn(HttpStatusCode.OK, employee);
-    }
-
-    [Fact]
-    [Trait("Category", "Integration")]
-    //task: make test pass
-    public async Task WhenAskedForANonexistentEmployee_ShouldReturn404()
-    {
-        var response = await HttpClient.GetAsync($"/api/v1/employees/{int.MinValue}");
-        await response.ShouldReturn(HttpStatusCode.NotFound);
-    }
+    public async Task<List<Dependent>> GetAllDependent() => _employees.SelectMany(x => x.Dependents).ToList();
+    public async Task<List<Employee>> GetAllEmployees() => _employees;
+    public async Task<Dependent?> GetDependent(int id) => (await GetAllDependent()).FirstOrDefault(x => x.Id == id);
+    public async Task<Employee?> GetEmployee(int id) => (await GetAllEmployees()).FirstOrDefault(x => x.Id == id);
 }
-

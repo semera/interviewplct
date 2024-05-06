@@ -4,13 +4,17 @@ using System.Net;
 using System.Threading.Tasks;
 using Api.Dtos.Dependent;
 using Api.Models;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Xunit;
 
 namespace ApiTests.IntegrationTests;
 
-public class DependentIntegrationTests : IntegrationTest
+[Trait("Category", "Integration")]
+public class DependentIntegrationTests : IntegrationTest, IClassFixture<WebApplicationFactory<Program>>
 {
     [Fact]
+    [Trait("Category", "Integration")]
     //task: make test pass
     public async Task WhenAskedForAllDependents_ShouldReturnAllDependents()
     {
@@ -54,6 +58,7 @@ public class DependentIntegrationTests : IntegrationTest
     }
 
     [Fact]
+    [Trait("Category", "Integration")]
     //task: make test pass
     public async Task WhenAskedForADependent_ShouldReturnCorrectDependent()
     {
@@ -70,6 +75,7 @@ public class DependentIntegrationTests : IntegrationTest
     }
 
     [Fact]
+    [Trait("Category", "Integration")]
     //task: make test pass
     public async Task WhenAskedForANonexistentDependent_ShouldReturn404()
     {

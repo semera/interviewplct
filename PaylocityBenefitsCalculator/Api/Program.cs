@@ -1,8 +1,15 @@
+using Api;
+using Api.Middleware;
+using Api.Services;
 using Microsoft.OpenApi.Models;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSingleton<IEmployeesDao, EmployeesDao>();
+
+builder.Services.AddAutoMapper(typeof(DtoProfile));
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,7 +32,7 @@ builder.Services.AddCors(options =>
         policy => { policy.WithOrigins("http://localhost:3000", "http://localhost"); });
 });
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -42,4 +49,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseErrorHandlingMiddleware();
+
 app.Run();
+
+// enables TestHost
+public partial class Program { }
