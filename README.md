@@ -4,7 +4,7 @@
 
 - The majority of time was spent on domain modeling.
   - This should make it easy to change or add new features.
-  - The best starting point to understand the code is [PaycheckService](\PaylocityBenefitsCalculator\Api\Domain\Paychecks\PaycheckService.cs).
+  - The best starting point to understand the code is [PaycheckService](/PaylocityBenefitsCalculator/Api/Domain/Paychecks/PaycheckService.cs).
 
 ## Requirement Implementation
 
@@ -16,6 +16,7 @@
 - All calculations are based on a one-day rate, then multiplied by the number of days in the period.
   - This means weekends are treated as normal days.
   - This is not a real-time approach, but it can be easily updated with a business calendar, holiday planner, and so on.
+  - Dependents are handled from a date when they started to be valid, for example child could be counted on for several days if he was born during the period.
   - All day rates are rounded to 2 decimal places, so there may be some rounding errors.
 
 - Paychecks are implemented as a sub-resource of employees in the EmployeesController.
